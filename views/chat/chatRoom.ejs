@@ -180,7 +180,7 @@
           timeout = setTimeout(() => {
             let msg = { sndId: sndId, rcvId: rcvId,content:'', typing: false };
             socket.emit("msg", msg);
-          }, 6000);
+          }, 3000);
           // use e.keyCode
         };
         const sendMessage = document.getElementById("sendMessage");
@@ -223,18 +223,19 @@
 
         localStorage.setItem("trim", 1);
         socket.on("rcvMsg", (data) => {
-          console.log("typing :", data.typing);
 
           if (data.typing == false) {
             let ty = document.getElementsByClassName("animation")[0];
+		
             for (var i = 0; i < ty.children.length; i++) {
               ty.children[i].remove();
               localStorage.setItem("trim", 1);
             } /* end of for */
+			ty.remove()
           } /* end of if */
 
           if (data.typing == true && data.check ==true) {
-            console.log("net typing ...");
+            
             if (localStorage.getItem("trim") == 1) {
               let chatRoom = document.getElementById("chat-room");
               let dv = document.createElement("div");
@@ -259,17 +260,11 @@
               localStorage.setItem("trim", 2);
             } /* end of trim */
           } else {
-			  console.log('data :',data)
+		
             if (data.content != false) {
-				let ty = document.getElementsByClassName("animation")[0];
-				ty.style.display="none"
               let formMsg = document.getElementById("formMsg");
               let sndId = formMsg.children[0].value;
               if (data.sendId != sndId) {
-                let ty = document.getElementsByClassName("animation")[0];
-                for (var i = 0; i < ty.children.length; i++) {
-                  ty.children[i].remove();
-                } /* end of for */
                 //this is a raciver
                 let chatRoom = document.getElementById("chat-room");
 
