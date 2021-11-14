@@ -1,0 +1,82 @@
+@import './colors';
+@import './main';
+@import './mobile';
+
+
+%flx{
+    display: flex;
+    align-items: center;
+}
+
+
+/* container */
+.container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    @extend %flx;
+    justify-content: center;
+    background-color: $ye;
+    flex-direction: column;
+    text-transform: capitalize;
+
+    /* login */
+    .login,.verfiyCode{
+        position:absolute;
+        width: 55%;
+        height: 50%;
+        background-color: $ce;
+        border-radius: 8px;
+        box-shadow: 2px 3px 5px #b1acac;
+        @extend %flx;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 3;
+        transition: all .4s ease;
+        @include mobileScreen{
+            width: 100%;
+            height: 100%;
+        }
+        form{
+            width: 80%;
+            height: 900%;
+            @extend %flx;
+            justify-content: center;
+            flex-direction: column;
+            input{
+                width: 90%;
+                height: 50px;
+                border-radius: 5px;
+                padding-left: 4px;
+                padding-right: 2px;
+                font-size: 18px;
+                background-color: $ye;
+                box-shadow: 2px 2px 6px #000,-2px -2px 6px rgb(182, 178, 178);
+                color: $pu;
+                margin-bottom: 4px;
+            }
+            #send,#verify{
+                width: 30%;
+                height: 40px;
+                margin-top: 4px;
+                border-radius: 4px;
+                background-color: $pu;
+                box-shadow: 2px 2px 3px rgb(0, 0, 0);
+                color: $ye;
+                font-size: 18px;
+                cursor: pointer;
+                &:hover{
+                    transform: scale(1.03);
+                    transition: transform .3s ease;
+                }
+            }
+        }/* /form */
+    }
+    /* /login */
+
+    /* verfiyCode */
+    .verfiyCode{
+        z-index: 2;
+    }/* /verfiyCode */
+}
+/* /container */

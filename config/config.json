@@ -2,9 +2,10 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "nodejsApi",
-    "host": "localhost",
-    "dialect": "mysql"
+    "database": "chatdb",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "underscored": true
   },
   "test": {
     "username": "root",

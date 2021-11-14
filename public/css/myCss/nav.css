@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #E245F0;
+  margin: 10px;
+}
+
+/* end of ipad */
+/* end of ipad */
+.container-nav .navbar .info, .container-nav .navbar {
+  display: flex;
+  align-items: center;
+}
+
+/* container-nav */
+.container-nav {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  /* /navbar */
+  /* /flash */
+}
+.container-nav .navbar {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  justify-content: space-between;
+  padding: 8px;
+  background: #E245F0;
+  /* /logo */
+  /* /info */
+}
+.container-nav .navbar .logo {
+  margin-left: 5px;
+}
+.container-nav .navbar .logo a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(to top left, #353232, #591f88, #1a865d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.container-nav .navbar .info {
+  padding: 5px;
+  font-size: 18px;
+  margin-right: 5px;
+  /* profile */
+  /* /profile */
+  /* .login */
+  /* /.login */
+}
+.container-nav .navbar .info .profile, .container-nav .navbar .info .login {
+  position: relative;
+  cursor: pointer;
+  color: #EBD696;
+  background: transparent;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  font-weight: 700;
+  /* /ileList */
+}
+.container-nav .navbar .info .profile .profileList, .container-nav .navbar .info .login .profileList {
+  cursor: default;
+  position: fixed;
+  width: 150px;
+  height: 59vh;
+  top: 50px;
+  right: -500px;
+  background-color: #2d2d2e;
+  border-bottom-left-radius: 6px;
+  box-shadow: 0px 4px 2px #443636, -4px 0px 2px #322c2c;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  /* justify-content: center; */
+  align-items: center;
+}
+.container-nav .navbar .info .profile .profileList.show, .container-nav .navbar .info .login .profileList.show {
+  transition: all 0.5s ease;
+  right: 0px;
+}
+.container-nav .navbar .info .profile .profileList li, .container-nav .navbar .info .login .profileList li {
+  width: 100%;
+  padding: 4px;
+  border-bottom: 2px solid #000;
+}
+.container-nav .navbar .info .profile .profileList li a, .container-nav .navbar .info .login .profileList li a {
+  text-decoration: none;
+}
+.container-nav .navbar .info .profile .profileList li a:hover, .container-nav .navbar .info .login .profileList li a:hover {
+  transition: color 0.3s ease;
+  color: #E245F0;
+}
+.container-nav .navbar .info .login a {
+  text-decoration: none;
+  color: #EBD696;
+}
+.container-nav .flash {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  top: -551px;
+  perspective: 600px;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  background-color: #EBD696;
+  z-index: -2;
+}
+.container-nav .flash .flash-cover {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.container-nav .flash .flash-cover p {
+  font-size: 18px;
+  color: #E245F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.container-nav .flash .flash-cover #close {
+  position: absolute;
+  top: 20px;
+  left: 5px;
+  color: #644f4f;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 2;
+}
+.container-nav .flash .flash-cover span {
+  position: absolute;
+  width: 0px;
+  bottom: -1px;
+  height: 5px;
+  background-color: rgba(226, 69, 240, 0.6);
+  transition: width 9s ease;
+}
+
+/* /container-nav */
+
+/*# sourceMappingURL=nav.css.map */

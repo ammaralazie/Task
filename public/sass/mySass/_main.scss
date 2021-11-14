@@ -1,0 +1,23 @@
+@import './colors';
+*{
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    border: none;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar{
+    width: 9px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: $pu;
+    margin: 10px;
+}

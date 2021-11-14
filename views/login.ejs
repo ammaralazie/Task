@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<%- '/css/myCss/style.css'%>">
+    <title>login</title>
+</head>
+<body>
+    <!-- container -->
+    <div class="container">
+        <!-- login -->
+        <div class="login" style="background: #594f6c;">
+            <form action="" method="post">
+                <input type="text" name="" id="phone" placeholder="your number">
+                <div id="recaptcha-container"></div>
+                <button id="send">send</button>
+            </form>
+        </div>
+        <!-- /login -->
+
+        <!-- verfiy -->
+        <div class="verfiyCode" style="background: #594f6c;">
+            <form action="" method="post">
+                <input type="text" name="" id="code" placeholder="Verify Number ...">
+                <button id="verify">verify</button>
+            </form>
+        </div>
+        <!-- /verfiy -->
+    </div>
+    <!-- /container -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/7.2.0/firebase-database.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/7.2.0/firebase-storage.js"></script>
+    <script type="module" src="<%- '/js/main.js'%>"></script>
+    <script type="module" src="<%- '/js/login.js'%>"></script>
+</body>
+</html>

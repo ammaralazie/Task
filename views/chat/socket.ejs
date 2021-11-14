@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" value id="user_id" />
+    <input type="text" value id="rcv_id" />
+    <button onclick="send()">send</button>
+    <button onclick="sendMessage()">sendMessage</button>
+    <ul id="list"></ul>
+    <p>socket ....</p>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      var user_id = document.getElementById("user_id").value;
+      var rcv_id=document.getElementById('rcv_id').value
+    
+      function send() {
+        var user_id = document.getElementById("user_id").value;
+        console.log(user_id)
+        socket.emit("user_id", user_id);
+      }; //end of send
+
+      //listen to server
+      socket.on("user_connect", function (user_id) {
+        let li = document.createElement("li");
+        li.textContent = user_id;
+        let ul = document.getElementById("list");
+        ul.appendChild(li);
+        console.log('listen to the server')
+      }); //end of listen for emit user_connect
+
+      function sendMessage(){
+        var user_id = document.getElementById("user_id").value;
+        var rcv_id=document.getElementById('rcv_id').value
+          socket.emit('send-message',{
+              user_id:user_id,
+              rcv_id:rcv_id,
+              message:'hellow'
+          })
+      };/*end of sendMessage */
+      socket.on('racive-message',function(data){
+        console.log(data)
+      })//end of listen for emit racive-message
+
+    </script>
+  </body>
+</html>

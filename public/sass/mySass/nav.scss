@@ -1,0 +1,134 @@
+@import './colors';
+@import './main';
+@import './mobile';
+
+%flx{
+    display: flex;
+    align-items: center;
+}
+
+/* container-nav */
+.container-nav{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    .navbar{
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        @extend %flx;
+        justify-content: space-between;
+        padding: 8px;
+        background: $pu;
+        .logo{
+            margin-left: 5px;
+            a{
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: 700;
+                background: linear-gradient(to top left,rgb(53, 50, 50),rgb(89, 31, 136),rgb(26, 134, 93));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }/* /logo */
+    
+        .info{
+            @extend %flx;
+            padding: 5px;
+            font-size: 18px;
+            margin-right: 5px;
+            /* profile */
+            .profile,.login{
+                position: relative;
+                cursor: pointer;
+                color: $ye;
+                background: transparent;
+                transition: all .3s ease;
+                font-size: 18px;
+                font-weight: 700;
+                .profileList{
+                    cursor:default;
+                    position: fixed;
+                    width: 150px;
+                    height: 59vh;
+                    top: 50px;
+                    right: -500px;
+                    background-color: rgb(45 45 46);
+                    border-bottom-left-radius: 6px;
+                    box-shadow: 0px 4px 2px #443636, -4px 0px 2px #322c2c;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 10px;
+                    /* justify-content: center; */
+                    align-items: center;
+                    &.show{
+                        transition: all .5s ease;
+                        right: 0px;
+                    }
+                    li{
+                        width: 100%;
+                        padding: 4px;
+                        border-bottom: 2px solid #000;
+                        a{
+                            text-decoration: none;
+                            &:hover{
+                                transition: color .3s ease;
+                                color: $pu;
+                            }
+                        }
+                    }
+                }/* /ileList */
+            }
+            /* /profile */
+            /* .login */
+            .login{
+                a{
+                    text-decoration: none;
+                    color:$ye
+                }
+            }
+            /* /.login */
+        }/* /info */
+    }/* /navbar */
+    .flash{
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        top: -551px;
+        perspective: 600px;
+        transform-style: preserve-3d;
+        transform-origin: center;
+        background-color: $ye;
+        z-index: -2;
+        .flash-cover{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            p{
+                font-size: 18px;
+                color: $pu;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+    
+            }#close{
+                position: absolute;
+                top: 20px;
+                left: 5px;
+                color: rgb(100 79 79);
+                cursor: pointer;
+                font-size: 18px;
+                z-index: 2;
+            }span{
+                position: absolute;
+                width: 0px;
+                bottom: -1px;
+                height: 5px;
+                background-color: rgb(226 69 240 / 60%);
+                transition: width 9s ease;
+            }
+        }
+    }/* /flash */
+}
+/* /container-nav */

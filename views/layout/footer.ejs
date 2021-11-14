@@ -1,0 +1,43 @@
+
+
+<!-- this section for frontend -->
+<script>
+    const btn=document.getElementsByClassName('profile')[0]
+    btn.addEventListener('click',()=>{
+        const profileList=document.getElementsByClassName('profileList')[0]
+        profileList.style.zIndex='10'
+        profileList.classList.toggle('show')
+    })
+    let flashCover=document.getElementsByClassName('flash')[0]
+    let span=document.getElementById('span')
+    let flash="<%= locals.update%>"
+    console.log('flash :',flash)
+    let message=document.getElementById('message')
+    let close=document.getElementById('close')
+    if(flash){
+
+        console.log('set working ...')
+        flashCover.style.top="51px"
+        flashCover.style.zIndex="2"
+        span.style.width="100%"
+        message.textContent=flash
+
+        close.addEventListener('click',()=>{
+        flashCover.style.top="-3351px"
+        span.style.width="0px"
+        message.textContent=''
+        flashCover.style.zIndex="-2"
+    })/* end of eventlistener */
+
+
+        setTimeout(()=>{
+            flashCover.style.top="-3351px"
+            span.style.width="0px"
+            message.textContent=''
+            flashCover.style.zIndex="-2"
+        },9000)
+        
+    }/* end of if */
+</script>
+</body>
+</html>

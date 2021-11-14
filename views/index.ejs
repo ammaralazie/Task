@@ -1,0 +1,29 @@
+<%-include('./layout/header.ejs',{profile:profile,title:'home'})%>
+    
+<div class="container-profile">
+    <div class="wepper-profile">
+
+        <%allProfile.forEach(item=>{%>
+        <!-- card -->
+        <div class="card-profile">
+            <%if(item.img_url){%>
+            <img src="<%- '/media/img/'+ item.img_url%>" alt="">
+            <%}else{%>
+                <img src="<%- '/media/img/default.jpg'%>" alt="">
+            <%}%>
+            <div class="name"><%= item.first_name%> &ThinSpace; <%= item.last_name%></div>
+            <form action="/chat" method="post">
+                <input type="hidden" value="<%= item.id%>" name="racive_user">
+                <button type="submit">Chat</button>
+            </form>
+        </div>
+        <!-- /card -->
+        <%})%>
+
+    </div>
+</div>
+<script>
+    const id="<%=profile.id%>"
+    localStorage.setItem('id',id)
+</script>
+<%-include('./layout/footer.ejs')%>

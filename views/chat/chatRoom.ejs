@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"
+    ></script>
+
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="<%- '/css/chat/chatRoom.css'%>" />
+
+    <!-- body -->
+    <body>
+      <div class="container-fluid h-100">
+        <div class="row justify-content-center h-100">
+          <div class="col-md-8 col-xl-6 chat">
+            <div class="card">
+              <div class="card-header msg_head">
+                <div class="d-flex bd-highlight">
+                  <div class="img_cont">
+                    <%if(raciver.img_url){%>
+                    <img
+                      src="<%-'/media/img/'+raciver.img_url%>"
+                      class="rounded-circle user_img"
+                    />
+                    <span class="online_icon"></span>
+                    <%}else{%>
+                    <img
+                      src="<%-'/media/img/default.jpg'%>"
+                      class="rounded-circle user_img"
+                    />
+                    <span class="online_icon"></span>
+                    <%}%><!-- end of if -->
+                  </div>
+                  <div class="user_info">
+                    <span>Chat with <%=raciver.first_name%></span>
+                    <p><%=count%>&ThinSpace; Messages</p>
+                  </div>
+                </div>
+                <span id="action_menu_btn"
+                  ><i class="fas fa-ellipsis-v"></i
+                ></span>
+                <div class="action_menu">
+                  <ul>
+                    <li>
+                      <a
+                        style="text-decoration: none"
+                        href="<%= '/'+raciver.id%>"
+                        ><i class="fas fa-user-circle"></i> View profile</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card-body msg_card_body" id="chat-room">
+                <%for(var i= (messages.length-1); i>=0; i--){%> <%if(user.id
+                ==messages[i].SProfiles.id){%>
+                <!-- sender -->
+                <div class="d-flex justify-content-end mb-4" id="raciver">
+                  <div class="msg_cotainer_send">
+                    <%=messages[i].content%>
+                    <span class="msg_time_send"><%=messages[i].date%></span>
+                  </div>
+                  <div class="img_cont_msg">
+                    <img src="" />
+                  </div>
+                </div>
+                <!-- /sender -->
+                <%}else{%>
+                <div class="d-flex justify-content-start mb-4" id="sender">
+                  <div class="img_cont_msg">
+                    <%if(messages[i].SProfiles.img_url){%>
+                    <img
+                      src="<%-'/media/img/'+messages[i].SProfiles.img_url%>"
+                      class="rounded-circle user_img_msg"
+                    />
+                    <%}else{%>
+                    <img
+                      src="<%-'/media/img/default.jpg'%>"
+                      class="rounded-circle user_img_msg"
+                    />
+                    <%}%>
+                  </div>
+                  <div class="msg_cotainer">
+                    <%=messages[i].content%>
+                    <span class="msg_time"><%=messages[i].date%></span>
+                  </div>
+                </div>
+                <!-- /raciver -->
+                <%}%><!-- end of if -->
+                <%}%><!-- end of forEach -->
+              </div>
+              <div class="card-footer">
+                <div class="input-group">
+                  <form
+                    action=""
+                    id="formMsg"
+                    style="width: 100%; display: flex"
+                  >
+                    <input type="hidden" name="sndId" value="<%=user.id%>" />
+                    <input type="hidden" name="rcvId" value="<%=raciver.id%>" />
+                    <div class="input-group-append">
+                      <span class="input-group-text attach_btn"></span>
+                    </div>
+                    <input
+                      name="msg"
+                      class="form-control type_msg"
+                      placeholder="Type your message..."
+                    />
+                    <div class="input-group-append">
+                      <button id="sendMessage" style="background: transparent">
+                        <span class="input-group-text send_btn"
+                          ><i class="fas fa-location-arrow"></i
+                        ></span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        $(document).ready(function () {
+          $("#action_menu_btn").click(function () {
+            $(".action_menu").toggle();
+          });
+        });
+        let chatRoom = document.getElementById("chat-room");
+        chatRoom.scrollTop = chatRoom.scrollHeight;
+      </script>
+
+      <!-- this script for socket io -->
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        socket = io();
+        const user = "<%=user.id%>";
+        const img_url = "<%=raciver.img_url%>";
+        socket.emit("rciv_msg", user); //send profile_id to server
+        var timeout = "";
+        //typing section
+
+        document.onkeypress = function (e) {
+          e = e || window.event;
+          let sndId = formMsg.children[0].value;
+          let rcvId = formMsg.children[1].value;
+          let msg = { sndId: sndId, rcvId: rcvId, typing: true };
+          socket.emit("msg", msg);
+          clearTimeout(timeout);
+          timeout = setTimeout(() => {
+            let msg = { sndId: sndId, rcvId: rcvId,content:'', typing: false };
+            socket.emit("msg", msg);
+          }, 6000);
+          // use e.keyCode
+        };
+        const sendMessage = document.getElementById("sendMessage");
+        sendMessage.addEventListener("click", (e) => {
+          let formMsg = document.getElementById("formMsg");
+          let sndId = formMsg.children[0].value;
+          let rcvId = formMsg.children[1].value;
+          let content = formMsg.children[3].value;
+          e.preventDefault();
+
+          let chatRoom = document.getElementById("chat-room");
+
+          let dv = document.createElement("div");
+          dv.classList.add("d-flex");
+          dv.classList.add("justify-content-end");
+          dv.classList.add("mb-4");
+          dv.id = "raciver";
+
+          let div2 = document.createElement("div");
+          div2.classList.add("msg_cotainer_send");
+          div2.textContent = content;
+
+          let spn = document.createElement("span");
+          spn.classList.add("msg_time_send");
+
+          div2.appendChild(spn);
+          dv.appendChild(div2);
+          chatRoom.appendChild(dv);
+
+          let msg = {
+            sndId: sndId,
+            rcvId: rcvId,
+            content: content,
+            typing: false,
+          };
+          formMsg.children[3].value = "";
+          chatRoom.scrollTop = chatRoom.scrollHeight;
+          socket.emit("msg", msg);
+        }); //end of addEventListener
+
+        localStorage.setItem("trim", 1);
+        socket.on("rcvMsg", (data) => {
+          console.log("typing :", data.typing);
+
+          if (data.typing == false) {
+            let ty = document.getElementsByClassName("animation")[0];
+            for (var i = 0; i < ty.children.length; i++) {
+              ty.children[i].remove();
+              localStorage.setItem("trim", 1);
+            } /* end of for */
+          } /* end of if */
+
+          if (data.typing == true && data.check ==true) {
+            console.log("net typing ...");
+            if (localStorage.getItem("trim") == 1) {
+              let chatRoom = document.getElementById("chat-room");
+              let dv = document.createElement("div");
+              dv.classList.add("d-flex");
+              dv.classList.add("justify-content-start");
+              dv.classList.add("mb-4");
+              dv.classList.add("animation");
+
+              let dinAnim = document.createElement("div");
+              dinAnim.classList.add("msg_cotainer");
+              dinAnim.classList.add("cover-dots");
+              let s1 = document.createElement("span");
+              let s2 = document.createElement("span");
+              let s3 = document.createElement("span");
+
+              dinAnim.appendChild(s1);
+              dinAnim.appendChild(s2);
+              dinAnim.appendChild(s3);
+              dv.appendChild(dinAnim);
+              chatRoom.appendChild(dv);
+              chatRoom.scrollTop = chatRoom.scrollHeight;
+              localStorage.setItem("trim", 2);
+            } /* end of trim */
+          } else {
+			  console.log('data :',data)
+            if (data.content != false) {
+				let ty = document.getElementsByClassName("animation")[0];
+				ty.style.display="none"
+              let formMsg = document.getElementById("formMsg");
+              let sndId = formMsg.children[0].value;
+              if (data.sendId != sndId) {
+                let ty = document.getElementsByClassName("animation")[0];
+                for (var i = 0; i < ty.children.length; i++) {
+                  ty.children[i].remove();
+                } /* end of for */
+                //this is a raciver
+                let chatRoom = document.getElementById("chat-room");
+
+                let dv = document.createElement("div");
+                dv.classList.add("d-flex");
+                dv.classList.add("justify-content-start");
+                dv.classList.add("mb-4");
+                dv.id = "sender";
+
+                let devimg = document.createElement("div");
+                devimg.classList.add("img_cont_msg");
+
+                let mg = document.createElement("img");
+                mg.classList.add("rounded-circle");
+                mg.classList.add("user_img_msg");
+                if (img_url) {
+                  mg.src = "/media/img/" + img_url;
+                } else {
+                  mg.src = "/media/img/default.jpg";
+                }
+
+                let divmsg = document.createElement("div");
+                divmsg.classList.add("msg_cotainer");
+                divmsg.textContent = data.content;
+
+                let spn = document.createElement("span");
+                spn.classList.add("msg_time");
+                spn.textContent = data.date;
+
+                devimg.appendChild(mg);
+                divmsg.appendChild(spn);
+                dv.appendChild(devimg);
+                dv.appendChild(divmsg);
+
+                chatRoom.appendChild(dv);
+                chatRoom.scrollTop = chatRoom.scrollHeight;
+              } /* end of if */
+            } /* end of if */
+          } /* end of if */
+        }); /* end of listen to emit rcvMsg */
+      </script>
+
+      <%-include('../layout/footer.ejs')%>
+    </body>
+  </head>
+</html>

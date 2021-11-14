@@ -1,0 +1,24 @@
+<%-include('../layout/header.ejs',{title:'profile'})%>
+<div class="container d-flex justify-content-center mt-5" style="display: flex;width: 100%;height: 90vh;align-items: center;justify-content: center;">
+    <form action="<%'/edit/'+profile.id%>" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="top-container"> 
+                <%if(profile.img_url){%>
+                    <img src="<%='/media/img/'+profile.img_url%>" class="img-fluid profile-image" width="70">
+                    <%}else{%>
+                        <img src="<%='/media/img/default.jpg'%>" class="img-fluid profile-image" width="70">
+                    <%}%>
+                <div class=" names" style="margin-left:4px;">
+                    <input type="text" class="name" placeholder="first name" name="first_name" value="<%=profile.first_name%>">&ThinSpace; <input type="text" class="name" placeholder="last name" name="last_name" value="<%=profile.last_name%>">
+                </div>
+            </div>
+            <div class="recent-border mt-4"style="margin-top:4px"> <textarea name="pio" class="recent-orders" style="min-height: 100px;"><%=profile.pio%></textarea> </div>
+            <input type="file" name="img_url" id="" style="margin-top: 10px;">
+            <button type="submit" class="fashion-studio-border pt-2"
+            style="text-decoration: none;background-color:rgb(226, 43, 52);border-radius: 4px;color:blueviolet;padding: 5px;margin: 9px;cursor: pointer;"> 
+            <span class="fashion-studio">save</span>
+         </button>
+        </div>
+    </form><!-- /form -->
+</div>
+<%-include('../layout/footer.ejs')%>

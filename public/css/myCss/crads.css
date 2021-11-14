@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* end of ipad */
+/* end of ipad */
+.container-profile {
+  width: 100%;
+  margin-top: 5px;
+}
+.container-profile .wepper-profile {
+  width: 100%;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  /* card */
+  /* /card */
+}
+.container-profile .wepper-profile .card-profile {
+  width: 210px;
+  height: 250px;
+  border-radius: 4px;
+  background-color: #AEEBDC;
+}
+.container-profile .wepper-profile .card-profile img {
+  width: 100%;
+  height: 60%;
+}
+.container-profile .wepper-profile .card-profile .name {
+  width: 100%;
+  height: 10%;
+  padding: 5px;
+  font-size: 18px;
+  color: #E245F0;
+}
+
+/* /container-profile */
+
+/*# sourceMappingURL=crads.css.map */

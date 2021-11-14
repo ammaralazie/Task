@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* end of ipad */
+/* end of ipad */
+.container .login form, .container .verfiyCode form, .container .login, .container .verfiyCode, .container {
+  display: flex;
+  align-items: center;
+}
+
+/* container */
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  justify-content: center;
+  background-color: #EBD696;
+  flex-direction: column;
+  text-transform: capitalize;
+  /* login */
+  /* /login */
+  /* verfiyCode */
+  /* /verfiyCode */
+}
+.container .login, .container .verfiyCode {
+  position: absolute;
+  width: 55%;
+  height: 50%;
+  background-color: #AEEBDC;
+  border-radius: 8px;
+  box-shadow: 2px 3px 5px #b1acac;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 3;
+  transition: all 0.4s ease;
+  /* /form */
+}
+@media screen and (max-width: 411px) {
+  .container .login, .container .verfiyCode {
+    width: 100%;
+    height: 100%;
+  }
+}
+.container .login form, .container .verfiyCode form {
+  width: 80%;
+  height: 900%;
+  justify-content: center;
+  flex-direction: column;
+}
+.container .login form input, .container .verfiyCode form input {
+  width: 90%;
+  height: 50px;
+  border-radius: 5px;
+  padding-left: 4px;
+  padding-right: 2px;
+  font-size: 18px;
+  background-color: #EBD696;
+  box-shadow: 2px 2px 6px #000, -2px -2px 6px #b6b2b2;
+  color: #E245F0;
+  margin-bottom: 4px;
+}
+.container .login form #send, .container .login form #verify, .container .verfiyCode form #send, .container .verfiyCode form #verify {
+  width: 30%;
+  height: 40px;
+  margin-top: 4px;
+  border-radius: 4px;
+  background-color: #E245F0;
+  box-shadow: 2px 2px 3px black;
+  color: #EBD696;
+  font-size: 18px;
+  cursor: pointer;
+}
+.container .login form #send:hover, .container .login form #verify:hover, .container .verfiyCode form #send:hover, .container .verfiyCode form #verify:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
+.container .verfiyCode {
+  z-index: 2;
+}
+
+/* /container */
+
+/*# sourceMappingURL=style.css.map */

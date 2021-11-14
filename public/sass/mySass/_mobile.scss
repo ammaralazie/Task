@@ -1,0 +1,11 @@
+@mixin ipadScreen {
+    @media screen and (max-width:720px){
+        @content
+    }
+};/* end of ipad */
+
+@mixin mobileScreen {
+    @media screen and (max-width:411px){
+        @content
+    }
+};/* end of ipad */

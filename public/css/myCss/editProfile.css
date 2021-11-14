@@ -1,0 +1,17 @@
+.card div .names {
+  display: flex;
+  flex-grow: 4px;
+  margin-bottom: 10px;
+}
+.card div .names input {
+  background-color: aliceblue;
+  width: 80px;
+  height: 20px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 3px;
+  font-size: 14px;
+  color: #313030;
+}
+
+/*# sourceMappingURL=editProfile.css.map */
